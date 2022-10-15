@@ -1,7 +1,22 @@
+using System.Data;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+try
+{
+    IConfiguration configuration = new ConfigurationManager();
+    string connectionString = configuration.GetConnectionString("Default");
+    IDbConnection db = new SqlConnection(connectionString);
+}
+catch (Exception e)
+{
+    Console.WriteLine("Error: " + e.Message + " AND " + e.TargetSite);
+}
 
 var app = builder.Build();
 
