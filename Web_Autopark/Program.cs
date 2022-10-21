@@ -11,12 +11,14 @@ try
 {
     IConfiguration configuration = new ConfigurationManager();
     string connectionString = configuration.GetConnectionString("Default");
+    Console.WriteLine(connectionString);
     IDbConnection db = new SqlConnection(connectionString);
 }
 catch (Exception e)
 {
     Console.WriteLine("Error: " + e.Message + " AND " + e.TargetSite);
 }
+
 
 var app = builder.Build();
 
