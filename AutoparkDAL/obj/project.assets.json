@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/temaors/Documents/dev-incubator/Web_Autopark/ClassLibrary1/ClassLibrary1.csproj",
-      "projectName": "ClassLibrary1",
-      "projectPath": "/Users/temaors/Documents/dev-incubator/Web_Autopark/ClassLibrary1/ClassLibrary1.csproj",
+      "projectUniqueName": "/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/AutoparkDAL.csproj",
+      "projectName": "AutoparkDAL",
+      "projectPath": "/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/AutoparkDAL.csproj",
       "packagesPath": "/Users/temaors/.nuget/packages/",
-      "outputPath": "/Users/temaors/Documents/dev-incubator/Web_Autopark/ClassLibrary1/obj/",
+      "outputPath": "/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/temaors/.nuget/NuGet/NuGet.Config"
