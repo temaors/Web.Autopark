@@ -36,17 +36,32 @@ public class ComponentRepository : IRepository<Component>
 
     public void Create(Component item)
     {
-        throw new NotImplementedException();
+        using (IDbConnection db = new SqlConnection(connectionString))
+        {
+            var sqlQuery =
+                "INSERT INTO Componets (ComponentId, Name)" +
+                "VALUES (@ComponentId, @Name)";
+            db.Execute(sqlQuery, item);
+        }
     }
 
     public void Update(Component item)
     {
-        throw new NotImplementedException();
+        using (IDbConnection db = new SqlConnection(connectionString))
+        {
+            var sqlQuery =
+                "UPDATE Components SET Name = @Name";
+            db.Execute(sqlQuery, item);
+        }
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        using (IDbConnection db = new SqlConnection(connectionString))
+        {
+            var sqlQuery = "DELETE FROM Components WHERE ComponentId = @id";
+            db.Execute(sqlQuery, new { id });
+        }
     }
 
     public void Save()
