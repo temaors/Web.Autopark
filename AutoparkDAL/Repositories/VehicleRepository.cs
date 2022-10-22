@@ -13,11 +13,6 @@ public class VehicleRepository : IRepository<Vehicle>
     {
         connectionString = conn;
     }
-    public void Dispose()
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<Vehicle> GetAll()
     {
         using (IDbConnection db = new SqlConnection(connectionString))
@@ -62,10 +57,5 @@ public class VehicleRepository : IRepository<Vehicle>
             var sqlQuery = "DELETE FROM Vehicles WHERE VehicleId = @id";
             db.Execute(sqlQuery, new { id });
         }
-    }
-
-    public void Save()
-    {
-        throw new NotImplementedException();
     }
 }

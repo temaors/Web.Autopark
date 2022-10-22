@@ -13,11 +13,6 @@ public class ComponentRepository : IRepository<Component>
     {
         connectionString = conn;
     }
-    public void Dispose()
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<Component> GetAll()
     {
         using (IDbConnection db = new SqlConnection(connectionString))
@@ -62,10 +57,5 @@ public class ComponentRepository : IRepository<Component>
             var sqlQuery = "DELETE FROM Components WHERE ComponentId = @id";
             db.Execute(sqlQuery, new { id });
         }
-    }
-
-    public void Save()
-    {
-        throw new NotImplementedException();
     }
 }

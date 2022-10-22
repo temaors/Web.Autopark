@@ -14,11 +14,6 @@ public class OrderRepository : IRepository<Order>
     {
         connectionString = conn;
     }
-    public void Dispose()
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<Order> GetAll()
     {
         using (IDbConnection db = new SqlConnection(connectionString))
@@ -63,10 +58,5 @@ public class OrderRepository : IRepository<Order>
             var sqlQuery = "DELETE FROM Orders WHERE OrderId = @id";
             db.Execute(sqlQuery, new { id });
         }
-    }
-
-    public void Save()
-    {
-        throw new NotImplementedException();
     }
 }
