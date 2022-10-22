@@ -12,4 +12,8 @@
       <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.0-preview1.22279.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\AutoparkDAL\AutoparkDAL.csproj" />
+    </ItemGroup>
+
 </Project>

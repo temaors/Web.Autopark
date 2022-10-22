@@ -1,6 +1,6 @@
-using ClassLibrary1.Entities;
-using ClassLibrary1.Repositories;
-using Web_Autopark.Interfaces;
+using AutoparkDAL.Entities;
+using AutoparkDAL.Interfaces;
+using AutoparkDAL.Repositories;
 using WebApplication;
 
 namespace Web_Autopark
@@ -12,15 +12,12 @@ namespace Web_Autopark
         public Startup(IConfiguration configuration)
         {
             _config = new AppConfig(configuration);
+            Console.WriteLine("Connection string: " + _config.ConnectionString);
+            _config.ConnectionString = "Server=localhost; Database=AutoparkDb; User Id=sa; Password=Orsi4ek148; TrustServerCertificate=true";
         }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddTransient<IRepository<VehicleType>, VehiclesTypesRepository>(provider =>
-                new VehiclesTypesRepository(_config.ConnectionString));
             services.AddTransient<IRepository<Vehicle>, VehicleRepository>(provider =>
                 new VehicleRepository(_config.ConnectionString));
         }

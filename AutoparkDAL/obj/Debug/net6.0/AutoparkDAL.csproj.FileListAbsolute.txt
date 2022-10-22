@@ -1,0 +1,12 @@
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/bin/Debug/net6.0/AutoparkDAL.deps.json
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/bin/Debug/net6.0/AutoparkDAL.dll
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/bin/Debug/net6.0/AutoparkDAL.pdb
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.csproj.AssemblyReference.cache
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.GeneratedMSBuildEditorConfig.editorconfig
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.AssemblyInfoInputs.cache
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.AssemblyInfo.cs
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.csproj.CoreCompileInputs.cache
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.dll
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/refint/AutoparkDAL.dll
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/AutoparkDAL.pdb
+/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/obj/Debug/net6.0/ref/AutoparkDAL.dll

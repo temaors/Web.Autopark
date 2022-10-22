@@ -791,6 +791,20 @@
             "rid": "win"
           }
         }
+      },
+      "AutoparkDAL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Dapper": "2.0.123",
+          "Microsoft.Data.SqlClient": "5.1.0-preview1.22279.3"
+        },
+        "compile": {
+          "bin/placeholder/AutoparkDAL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AutoparkDAL.dll": {}
+        }
       }
     }
   },
@@ -2588,10 +2602,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "AutoparkDAL/1.0.0": {
+      "type": "project",
+      "path": "../AutoparkDAL/AutoparkDAL.csproj",
+      "msbuildProject": "../AutoparkDAL/AutoparkDAL.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "AutoparkDAL >= 1.0.0",
       "Dapper >= 2.0.123",
       "Microsoft.Data.SqlClient >= 5.1.0-preview1.22279.3"
     ]
@@ -2621,7 +2641,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/AutoparkDAL.csproj": {
+              "projectPath": "/Users/temaors/Documents/dev-incubator/Web_Autopark/AutoparkDAL/AutoparkDAL.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,4 +1,5 @@
 using System.Drawing;
+using AutoparkDAL.Interfaces;
 
 namespace AutoparkDAL.Entities;
 
@@ -11,6 +12,6 @@ public class Vehicle
     public double Weight { get; set; }
     public int Year { get; set; }
     public double Mileage { get; set; }
-    public Color Color { get; set; }
+    public string Color { get; set; }
     public double FuelConsumption { get; set; }
 }

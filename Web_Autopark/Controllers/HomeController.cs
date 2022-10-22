@@ -1,4 +1,6 @@
 ﻿using System.Diagnostics;
+using AutoparkDAL.Entities;
+using AutoparkDAL.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Web_Autopark.Models;
 
@@ -8,14 +10,16 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public IRepository<Vehicle> repo;
+    public HomeController(ILogger<HomeController> logger, IRepository<Vehicle> rep)
     {
         _logger = logger;
+        repo = rep;
     }
 
     public IActionResult Index()
     {
-        return View();
+        return View(repo.GetAll());
     }
 
     public IActionResult Privacy()
