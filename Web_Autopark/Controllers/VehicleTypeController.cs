@@ -21,10 +21,27 @@ public class VehicleTypeController : Controller
         return View(repo.GetAll());
     }
     
-    
-
     public IActionResult Create()
     {
         return View();
     }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(VehicleType vehicleType)
+    {
+        repo.Create(vehicleType);
+        return RedirectToAction("Index");
+    }
+    [HttpDelete]
+    public IActionResult DeleteConfirm(int id)
+    {
+        repo.Delete(id);
+        return RedirectToAction("Index");
+    }
+
+    // public IActionResult Delete(int id)
+    // {
+    //     repo.GetItem(id);
+    //     
+    // }
 }
