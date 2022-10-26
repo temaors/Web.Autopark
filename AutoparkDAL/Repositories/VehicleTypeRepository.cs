@@ -19,7 +19,7 @@ public class VehicleTypeRepository : IRepository<VehicleType>
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<VehicleType>("SELECT * FROM Vehicletypes").ToList();
+            return db.Query<VehicleType>("SELECT * FROM VehicleTypes").ToList();
         }
     }
 
@@ -27,7 +27,7 @@ public class VehicleTypeRepository : IRepository<VehicleType>
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<VehicleType>("SELECT * FROM Vehicletypes WHERE VehicletypeId = @id", new {id}).FirstOrDefault();
+            return db.Query<VehicleType>("SELECT * FROM VehicleTypes WHERE VehicletypeId = @id", new {id}).FirstOrDefault();
         }
     }
 

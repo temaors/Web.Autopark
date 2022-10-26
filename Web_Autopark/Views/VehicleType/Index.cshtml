@@ -1,0 +1,27 @@
+@model IEnumerable<AutoparkDAL.Entities.VehicleType>
+@* *@
+@* @{ *@
+@*     ViewBag.Title = "title"; *@
+@*     Layout = "_Layout"; *@
+@* } *@
+
+<table>
+    <tr>
+        <th>VehicleType Id</th>
+        <th>Name</th>
+        <th>Tax Coefficient</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.VehicleTypeId</th>
+            <th>@item.Name</th>
+            <th>@item.TaxCoefficient</th>
+        </tr>
+    }
+</table>
+
+<a asp-controller="VehicleType" asp-action="Create">
+    Add new Vehicle Type
+</a>
+

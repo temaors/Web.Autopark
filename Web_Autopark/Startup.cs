@@ -26,10 +26,10 @@ namespace Web_Autopark
                 new ComponentRepository(_config.ConnectionString));
             services.AddTransient<IRepository<Order>, OrderRepository>(provider =>
                 new OrderRepository(_config.ConnectionString));
+            services.AddTransient<IRepository<OrderItem>, OrderItemRepository>(provider =>
+                new OrderItemRepository(_config.ConnectionString));
             services.AddControllersWithViews();
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
