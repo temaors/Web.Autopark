@@ -13,49 +13,49 @@ public class OrderItemRepository : IRepository<OrderItem>
     {
         connectionString = conn;
     }
-    public IEnumerable<OrderItem> GetAll()
+    public async Task<IEnumerable<OrderItem>> GetAll()
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<OrderItem>("SELECT * FROM OrderItems").ToList();
+            return await db.QueryAsync<OrderItem>("SELECT * FROM OrderItems");
         }
     }
 
-    public OrderItem GetItem(int id)
+    public async Task<OrderItem> GetItem(int id)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<OrderItem>("SELECT * FROM OrderItems WHERE OrderItemId = @id", new {id}).FirstOrDefault();
+            return await db.QueryFirstAsync<OrderItem>("SELECT * FROM OrderItems WHERE OrderItemId = @id", new {id});
         }
     }
 
-    public void Create(OrderItem item)
+    public async Task Create(OrderItem item)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
                 "INSERT INTO OrderItem (OrderItemId, OrderId, ComponentId, Quantity)" +
                 "VALUES (@OrderItemId, @OrderId, @ComponentId, @Quantity)";
-            db.Execute(sqlQuery, item);
+            await db.ExecuteAsync(sqlQuery, item);
         }
     }
 
-    public void Update(OrderItem item)
+    public async Task Update(OrderItem item)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
                 "UPDATE OrderItems SET OrderId = @OrderId, ComponentId = @ComponentId, Quantity = @Quantity";
-            db.Execute(sqlQuery, item);
+            await db.ExecuteAsync(sqlQuery, item);
         }
     }
 
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery = "DELETE FROM OrderItems WHERE OrderItemsId = @id";
-            db.Execute(sqlQuery, new { id });
+            await db.ExecuteAsync(sqlQuery, new { id });
         }
     }
 }

@@ -15,49 +15,48 @@ public class VehicleTypeRepository : IRepository<VehicleType>
         connectionString = conn;
     }
     
-    public IEnumerable<VehicleType> GetAll()
+    public async Task<IEnumerable<VehicleType>> GetAll()
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<VehicleType>("SELECT * FROM VehicleTypes").ToList();
+            return await db.QueryAsync<VehicleType>("SELECT * FROM VehicleTypes");
         }
     }
 
-    public VehicleType GetItem(int id)
+    public async Task<VehicleType> GetItem(int id)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<VehicleType>("SELECT * FROM VehicleTypes WHERE VehicletypeId = @id", new {id}).FirstOrDefault();
+            return await db.QueryFirstAsync<VehicleType>("SELECT * FROM VehicleTypes WHERE VehicletypeId = @id", new {id});
         }
     }
 
-    public void Create(VehicleType item)
+    public async Task Create(VehicleType item)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
                 "INSERT INTO VehicleTypes (Name, TaxCoefficient)" +
                 "VALUES (@Name, @TaxCoefficient)";
-            db.Execute(sqlQuery, item);
+            await db.ExecuteAsync(sqlQuery, item);
         }
     }
 
-    public void Update(VehicleType item)
+    public async Task Update(VehicleType item)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            var sqlQuery =
-                "UPDATE VehicleTypes SET Name = @Name, TaxCoefficient = @TaxCoefficient";
-            db.Execute(sqlQuery, item);
+            var sqlQuery = "UPDATE VehicleTypes SET Name = @Name, TaxCoefficient = @TaxCoefficient WHERE VehicleTypeId = @id";
+            await db.ExecuteAsync(sqlQuery, item);
         }
     }
 
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery = "DELETE FROM VehicleTypes WHERE VehicleTypeId = @id";
-            db.Execute(sqlQuery, new { id });
+            await db.ExecuteAsync(sqlQuery, new { id });
         }
     }
 }

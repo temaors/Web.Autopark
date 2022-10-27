@@ -16,9 +16,10 @@ public class VehicleTypeController : Controller
         repo = rep;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View(repo.GetAll());
+        var vehicleTypes = await repo.GetAll();
+        return View(vehicleTypes);
     }
     
     public IActionResult Create()
@@ -32,10 +33,31 @@ public class VehicleTypeController : Controller
         repo.Create(vehicleType);
         return RedirectToAction("Index");
     }
-    [HttpDelete]
-    public IActionResult DeleteConfirm(int id)
+    // [HttpDelete]
+    // public IActionResult DeleteConfirm(int id)
+    // {
+    //     repo.Delete(id);
+    //     return RedirectToAction("Index");
+    // }
+    //
+    // public IActionResult Delete(int id)
+    // {
+    //     return View();
+    // }
+
+    // public IActionResult Edit(int id)
+    // {
+    //     VehicleType vehicleType = repo.GetItem(id);
+    //     if (vehicleType == null)
+    //     {
+    //         return NotFound();
+    //     }
+    //     return View(vehicleType);
+    // }
+
+    public IActionResult EditConfirm(VehicleType vehicleType)
     {
-        repo.Delete(id);
+        repo.Update(vehicleType);
         return RedirectToAction("Index");
     }
 

@@ -1,0 +1,27 @@
+@model AutoparkDAL.Entities.VehicleType
+
+@{
+    ViewData["Title"] = "Edit Vehicle Type";
+}
+<h2>@ViewData["Title"]</h2>
+ 
+<form asp-action="EditConfirm" asp-controller="VehicleType">
+    <div>
+        <input type="hidden" asp-for="VehicleTypeId" />
+        <div class="form-group">
+            <label asp-for="Name">Name:</label>
+            <input type="text" asp-for="Name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="TaxCoefficient">Tax Coefficient:</label>
+            <input asp-for="TaxCoefficient" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+    </div>
+</form>
+ 
+<div>
+    <a asp-controller="VehicleType" asp-action="Index">Back to List</a>
+</div>

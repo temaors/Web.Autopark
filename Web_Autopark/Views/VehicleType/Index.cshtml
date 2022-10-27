@@ -1,9 +1,12 @@
 @model IEnumerable<AutoparkDAL.Entities.VehicleType>
+
+
 @* *@
 @* @{ *@
 @*     ViewBag.Title = "title"; *@
 @*     Layout = "_Layout"; *@
 @* } *@
+
 
 <table class="table-bordered">
     <tr class="">
@@ -18,10 +21,10 @@
             <th>@item.Name</th>
             <th>@item.TaxCoefficient</th>
         <th>
-            <input type="submit" value="Edit" class="btn btn-info w-100"/>
+            @* <a type="button" asp-controller="VehicleType" asp-action="Edit" asp-route-id="@item.VehicleTypeId" class="btn btn-info w-100">Edit</a> *@
         </th>
         <th>
-            <input type="submit" value="Delete" class="btn btn-danger"/>
+            <input type="submit" value="Delete" asp-controller="VehicleType" asp-action="Delete" class="btn btn-danger"/>
             </th>
         </tr>
     }

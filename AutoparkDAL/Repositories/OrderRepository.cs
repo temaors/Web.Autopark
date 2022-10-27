@@ -14,49 +14,49 @@ public class OrderRepository : IRepository<Order>
     {
         connectionString = conn;
     }
-    public IEnumerable<Order> GetAll()
+    public async Task<IEnumerable<Order>> GetAll()
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<Order>("SELECT * FROM Orders").ToList();
+            return await db.QueryAsync<Order>("SELECT * FROM Orders");
         }
     }
 
-    public Order GetItem(int id)
+    public async Task<Order> GetItem(int id)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            return db.Query<Order>("SELECT * FROM Orders WHERE OrderId = @id", new {id}).FirstOrDefault();
+            return await db.QueryFirstAsync<Order>("SELECT * FROM Orders WHERE OrderId = @id", new {id});
         }
     }
 
-    public void Create(Order item)
+    public async Task Create(Order item)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
                 "INSERT INTO Orders (VehicleId, Date)" +
                 "VALUES (@VehicleId, @Date)";
-            db.Execute(sqlQuery, item);
+            await db.ExecuteAsync(sqlQuery, item);
         }
     }
 
-    public void Update(Order item)
+    public async Task Update(Order item)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
                 "UPDATE Orders SET VehicleId = @VehicleId, Date = @Date";
-            db.Execute(sqlQuery, item);
+            await db.ExecuteAsync(sqlQuery, item);
         }
     }
 
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery = "DELETE FROM Orders WHERE OrderId = @id";
-            db.Execute(sqlQuery, new { id });
+            await db.ExecuteAsync(sqlQuery, new { id });
         }
     }
 }

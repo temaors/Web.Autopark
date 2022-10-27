@@ -1,38 +1,9 @@
-﻿@model IEnumerable<AutoparkDAL.Entities.Vehicle>
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <table>
-        <tr>
-            <th>VehicleId</th>
-            <th>VehicleTypeId</th>
-            <th>Model</th>
-            <th>RegistrationNumber</th>
-            <th>Weight</th>
-            <th>Year</th>
-            <th>Mileage</th>
-            <th>Color</th>
-            <th>FuelConsumption</th>
-        </tr>
-    
-        @foreach (var item in Model)
-        {
-            <tr>
-                <th>@item.VehicleId</th>
-                <th>@item.VehicleTypeId</th>
-                <th>@item.Model</th>
-                <th>@item.RegistrationNumber</th>
-                <th>@item.Weight</th>
-                <th>@item.Year</th>
-                <th>@item.Mileage</th>
-                <th>@item.Color</th>
-                <th>@item.FuelConsumption</th>
-            </tr>
-        }
-    </table>
-    
+
 </div>
