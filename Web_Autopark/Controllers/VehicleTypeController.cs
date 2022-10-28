@@ -45,25 +45,21 @@ public class VehicleTypeController : Controller
     //     return View();
     // }
 
-    // public IActionResult Edit(int id)
-    // {
-    //     VehicleType vehicleType = repo.GetItem(id);
-    //     if (vehicleType == null)
-    //     {
-    //         return NotFound();
-    //     }
-    //     return View(vehicleType);
-    // }
-
-    public IActionResult EditConfirm(VehicleType vehicleType)
+    public async Task<IActionResult> Edit(int id)
     {
-        repo.Update(vehicleType);
+        var vehicleType = await repo.GetItem(id);
+        return View(vehicleType);
+    }
+
+    public async Task<IActionResult> EditConfirm(VehicleType vehicleType)
+    {
+        await repo.Update(vehicleType);
         return RedirectToAction("Index");
     }
 
-    // public IActionResult Delete(int id)
-    // {
-    //     repo.GetItem(id);
-    //     
-    // }
+    public async Task<IActionResult> Delete(int id)
+    {
+        await repo.Delete(id);
+        return RedirectToAction("Index");
+    }
 }

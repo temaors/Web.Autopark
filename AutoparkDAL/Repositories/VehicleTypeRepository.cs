@@ -46,7 +46,7 @@ public class VehicleTypeRepository : IRepository<VehicleType>
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            var sqlQuery = "UPDATE VehicleTypes SET Name = @Name, TaxCoefficient = @TaxCoefficient WHERE VehicleTypeId = @id";
+            var sqlQuery = "UPDATE VehicleTypes SET Name = @Name, TaxCoefficient = @TaxCoefficient WHERE VehicleTypeId = @VehicleTypeId";
             await db.ExecuteAsync(sqlQuery, item);
         }
     }
