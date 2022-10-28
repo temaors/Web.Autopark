@@ -16,8 +16,4 @@
       <ProjectReference Include="..\AutoparkDAL\AutoparkDAL.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Views\Vehicle" />
-    </ItemGroup>
-
 </Project>

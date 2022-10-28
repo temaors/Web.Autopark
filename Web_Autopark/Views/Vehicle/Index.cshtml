@@ -1,0 +1,42 @@
+@model IEnumerable<AutoparkDAL.Entities.Vehicle>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+
+<table class="table-bordered">
+    <tr class="">
+        <th>Model</th>
+        <th>Manufacture year</th>
+        <th>Registration number</th>
+        <th>Mileage</th>
+        <th>Weight</th>
+        <th>Color</th>
+        <th>Fuel Consumption</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Model</td>
+            <td>@item.Year</td>
+            <td>@item.RegistrationNumber</td>
+            <td>@item.Mileage</td>
+            <td>@item.Weight</td>
+            <td>@item.Color</td>
+            <td>@item.FuelConsumption</td>
+        <th>
+            <a type="button" asp-controller="Vehicle" asp-route-id="@item.VehicleId" class="btn btn-info w-100">Edit</a>
+        </th>
+            <th>
+                <a type="button" asp-controller="Vehicle" class="btn btn-danger" asp-route-id="@item.VehicleId">Delete</a>
+            </th>
+        </tr>
+    }
+</table>
+
+<a asp-controller="VehicleType" asp-action="Create" class="btn-info">
+    Add new Vehicle
+</a>
+
