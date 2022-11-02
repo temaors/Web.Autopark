@@ -1,5 +1,7 @@
+using System.Collections;
 using AutoparkDAL.Entities;
 using AutoparkDAL.Interfaces;
+using AutoparkDAL.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Web_Autopark.Controllers;
@@ -9,7 +11,8 @@ public class VehicleTypeController : Controller
     private readonly ILogger<VehicleTypeController> _logger;
 
     public IRepository<VehicleType> repo;
-    
+
+
     public VehicleTypeController(ILogger<VehicleTypeController> logger, IRepository<VehicleType> rep)
     {
         _logger = logger;
@@ -28,23 +31,11 @@ public class VehicleTypeController : Controller
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public IActionResult Create(VehicleType vehicleType)
+    public async Task<IActionResult> Create(VehicleType vehicleType)
     {
-        repo.Create(vehicleType);
+        await repo.Create(vehicleType);
         return RedirectToAction("Index");
     }
-    // [HttpDelete]
-    // public IActionResult DeleteConfirm(int id)
-    // {
-    //     repo.Delete(id);
-    //     return RedirectToAction("Index");
-    // }
-    //
-    // public IActionResult Delete(int id)
-    // {
-    //     return View();
-    // }
-
     public async Task<IActionResult> Edit(int id)
     {
         var vehicleType = await repo.GetItem(id);
@@ -59,6 +50,12 @@ public class VehicleTypeController : Controller
 
     public async Task<IActionResult> Delete(int id)
     {
+        // string message = "Your request is being processed.";
+        // System.Text.StringBuilder sb = new System.Text.StringBuilder();
+        // sb.Append("alert('");
+        // sb.Append(message);
+        // sb.Append("');");
+        // ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", sb.ToString());
         await repo.Delete(id);
         return RedirectToAction("Index");
     }

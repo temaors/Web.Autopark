@@ -31,6 +31,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Vehicle/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVmVoaWNsZS9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Vehicle/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVmVoaWNsZS9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Vehicle/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVmVoaWNsZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
