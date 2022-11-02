@@ -24,6 +24,6 @@ public class Vehicle
 
     public double GetMaxKilometers()
     {
-        return Volume / FuelConsumption;
+        return Volume / FuelConsumption * 100;
     }
 }

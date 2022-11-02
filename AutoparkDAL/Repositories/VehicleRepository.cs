@@ -34,8 +34,8 @@ public class VehicleRepository : IRepository<Vehicle>
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
-                "INSERT INTO Vehicles (VehicleTypeId, Model, RegistrationNumber, Weight, Year, Mileage, Color, FuelConsumption)" +
-                "VALUES (@VehicleTypeId, @Model, @RegistrationNumber, @Weight, @Year, @Mileage, @Color, @FuelConsumption)";
+                "INSERT INTO Vehicles (VehicleTypeId, Model, RegistrationNumber, Weight, Year, Mileage, Color, FuelConsumption, Volume)" +
+                "VALUES (@VehicleTypeId, @Model, @RegistrationNumber, @Weight, @Year, @Mileage, @Color, @FuelConsumption, @Volume)";
             await db.ExecuteAsync(sqlQuery, item);
         }
     }

@@ -6,8 +6,8 @@
 }
 
 
-<div class="container p-3">
-    <div class="row pt-4">
+<div class="container p-2">
+    <div class="row pt-2">
         <div class="col-6">
             <h2 class="text-primary">Vehicles list</h2>
         </div>
@@ -25,13 +25,12 @@
         <thead>
         <tr>
             <th>Model</th>
+            <th>Type</th>
             <th>Manufacture year</th>
             <th>Registration number</th>
             <th>Mileage</th>
             <th>Weight</th>
             <th>Color</th>
-            <th>Fuel Consumption</th>
-            <th>Volume</th>
         </tr>
         </thead>
         <tbody>
@@ -39,17 +38,15 @@
             {
                 <tr>
                     <td>@item.Model</td>
+                    <td>@item.VehicleType.Name</td>
                     <td>@item.Year</td>
                     <td>@item.RegistrationNumber</td>
                     <td>@item.Mileage</td>
                     <td>@item.Weight</td>
                     <td>@item.Color</td>
-                    <td>@item.FuelConsumption</td>
-                    <td>@item.Volume</td>
-                <th>
-                    <a type="button" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@item.VehicleId" class="btn btn-info w-25">Edit</a>
-                    <a type="button" asp-controller="Vehicle" asp-action="Delete" class="btn btn-danger w-25" asp-route-id="@item.VehicleId">Delete</a>
-                </th>
+                    <th>
+                        <a type="button" asp-controller="Vehicle" asp-action="GetInfo" class="btn-outline-info" asp-route-id="@item.VehicleId">Manage</a>
+                    </th>
                 </tr>
             }
             </tbody>

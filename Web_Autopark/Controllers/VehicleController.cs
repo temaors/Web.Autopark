@@ -19,6 +19,10 @@ public class VehicleController : Controller
     public async Task<IActionResult> Index()
     {
         var vehicles = await repo.GetAll();
+        foreach (var item in vehicles)
+        {
+            item.VehicleType = await types.GetItem(item.VehicleTypeId);
+        }
         return View(vehicles);
     }
 
@@ -39,8 +43,8 @@ public class VehicleController : Controller
     [HttpGet]
     public async Task<ActionResult> GetInfo(int id)
     {
-        var vehicle = await _vehiclesRepository.Get(id);
-        vehicle.VehicleType = await _vehiclesTypesRepository.Get(vehicle.Vehicle_Type_Id);
+        var vehicle = await repo.GetItem(id);
+        vehicle.VehicleType = await types.GetItem(vehicle.VehicleTypeId);
         return View(vehicle);
     }
     

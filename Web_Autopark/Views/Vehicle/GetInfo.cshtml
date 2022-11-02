@@ -1,0 +1,35 @@
+@model AutoparkDAL.Entities.Vehicle
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Vehicle</h2>
+
+<form asp-action="GetInfo" asp-controller="Vehicle">
+    <h6><b>Type: </b>@Model.VehicleType.Name</h6>
+    <h6><b>Model name: </b>@Model.Model</h6>
+    <h6><b>Registration Number: </b>@Model.RegistrationNumber</h6>
+    <h6><b>Weight: </b>@Model.Weight kg</h6>
+
+    <h6><b>Manufacture Year: </b>@Model.Year</h6>
+
+    <h6><b>Mileage: </b>@Model.Mileage km</h6>
+
+    <h6><b>Color: </b>@Model.Color</h6>
+
+    <h6><b>Volume: </b>@Model.Volume</h6>
+
+    <h6><b>Fuel Consumption: </b>@Model.FuelConsumption</h6>
+
+    <h6><b>Road tax amount per month: </b>@Model.GetCalcTaxPerMonth().ToString("0.00")</h6>
+
+    <h6><b>Max kilometers that the vehicle can drive with a full tank: </b>@Model.GetMaxKilometers().ToString("0.00")</h6>
+    <br/>
+    </form>
+<a type="button" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@Model" class="btn btn-info w-25">Edit</a>
+<a type="button" asp-controller="Vehicle" asp-action="Delete" class="btn btn-danger w-25" asp-route-id="@Model.VehicleId">Delete</a>
+<div>
+    <a asp-action="Index" asp-controller="Vehicle">Back to List</a>
+    </div>
