@@ -44,8 +44,7 @@ public class VehicleRepository : IRepository<Vehicle>
     {
         using (IDbConnection db = new SqlConnection(connectionString))
         {
-            var sqlQuery =
-                "UPDATE Vehicles SET VehicleType = @VehicleType, Model = @Model, RegistrationNumber = @RegistrationNumber, Weight = @Weight, Year = @Year, Mileage = @Mileage, Color = @Color, FuelConsumption = @FuelConsumption WHERE VehicleId = @VehicleId";
+            var sqlQuery = "UPDATE Vehicles SET VehicleTypeId = @VehicleTypeId, Model = @Model, RegistrationNumber = @RegistrationNumber, Weight = @Weight, Year = @Year, Mileage = @Mileage, Color = @Color, FuelConsumption = @FuelConsumption, Volume = @Volume WHERE VehicleId = @VehicleId";
             await db.ExecuteAsync(sqlQuery, item);
         }
     }

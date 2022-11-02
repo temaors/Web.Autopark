@@ -47,33 +47,22 @@ public class VehicleController : Controller
         vehicle.VehicleType = await types.GetItem(vehicle.VehicleTypeId);
         return View(vehicle);
     }
-    
-    // [HttpPost]
-    // [ValidateAntiForgeryToken]
-    // public async Task<IActionResult> Upsert(int? vehicleId)
-    // {
-    //     Vehicle vehicle = new Vehicle();
-    //     if (vehicleId == null)
-    //     {
-    //         return View(vehicle);
-    //     }
-    //     else
-    //     {
-    //         await repo.GetItem(vehicleId);
-    //     }
-    //     return RedirectToAction("Index");
-    // }
-    
-    public async Task<IActionResult> Edit()
+    public async Task<IActionResult> Edit(int id)
     {
-        return View();
+        var vehicle = await repo.GetItem(id);
+        var vehicleTypes = await types.GetAll();
+        ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
+        return View(vehicle);
     }
-    public async Task<IActionResult> EditConfirm()
+    [HttpPost]
+    public async Task<IActionResult> EditConfirm(Vehicle vehicle)
     {
+        await repo.Update(vehicle);
         return RedirectToAction("Index");
     }
-    public async Task<IActionResult> Delete()
+    public async Task<IActionResult> Delete(int id)
     {
+        await repo.Delete(id);
         return RedirectToAction("Index");
     }
 }

@@ -28,7 +28,7 @@
     <h6><b>Max kilometers that the vehicle can drive with a full tank: </b>@Model.GetMaxKilometers().ToString("0.00")</h6>
     <br/>
     </form>
-<a type="button" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@Model" class="btn btn-info w-25">Edit</a>
+<a type="button" asp-controller="Vehicle" asp-action="Edit" asp-route-id="@Model.VehicleId" class="btn btn-info w-25">Edit</a>
 <a type="button" asp-controller="Vehicle" asp-action="Delete" class="btn btn-danger w-25" asp-route-id="@Model.VehicleId">Delete</a>
 <div>
     <a asp-action="Index" asp-controller="Vehicle">Back to List</a>
