@@ -9,11 +9,12 @@
 <div class="container p-2">
     <div class="row pt-2">
         <div class="col-11 w-75">
-            <h1 class="text-primary">Vehicles list</h1>
+            <h1 style="color: #0dcaf0">Vehicles list</h1>
         </div>
         <div class="col-1 w-25">
             <a asp-controller="Vehicle" asp-action="Create" type="button" class="btn btn-outline-info" style="margin: 10px 10px 0px 0px">
-                Add new Vehicle
+                <i class="fa-solid fa-plus"></i>
+                new vehicle
             </a>
         </div>
         <div class="col-1">
@@ -54,6 +55,7 @@
             </th>
             <th>Weight</th>
             <th>Color</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -68,7 +70,7 @@
                     <td>@item.Weight</td>
                     <td>@item.Color</td>
                     <th>
-                        <a type="button" asp-controller="Vehicle" asp-action="GetInfo" class="btn btn-info w-100" asp-route-id="@item.VehicleId">Manage</a>
+                        <a type="button" asp-controller="Vehicle" asp-action="GetInfo" class="btn btn-info w-100" asp-route-id="@item.VehicleId"><i class="fa-solid fa-gear"></i> Manage</a>
                     </th>
                 </tr>
             }
@@ -77,6 +79,6 @@
     }
     else
     {
-        <p>No Vehicles in database</p>
+        <p>No vehicles in the database</p>
     }
 </div>

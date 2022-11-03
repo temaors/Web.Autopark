@@ -1,0 +1,38 @@
+@model IEnumerable<AutoparkDAL.Entities.Component>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+<h1 style="color: #0dcaf0">
+    Components
+</h1>
+<div class="container">
+    <div style="display: flex; width: 35%" >
+        @if (Model.Any())
+        {
+            <table class="table table-bordered table-striped" style="width:100%">
+                <thead>
+                <th>Name of component</th>
+                </thead>
+                <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                        @item.Name
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h4 class="text-danger">There are no components in the database</h4>
+        }
+    </div>
+    <div style="display: flex; width: 35%">
+        <i class="fa-solid fa-plus"></i> New Component
+    </div>
+</div>

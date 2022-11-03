@@ -16,3 +16,38 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.footer {
+  background-color: #a6a6a6;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 30px;
+}
+
+.nicknames {
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #5C5C5C;
+}
+
+.social {
+  display: flex;
+  gap: 25px;
+  list-style-type: none;
+}
+
+svg {
+  transition: all .2s linear;
+}
+
+svg:hover {
+  fill: #1B446A;
+}

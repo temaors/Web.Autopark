@@ -16,4 +16,8 @@
       <ProjectReference Include="..\AutoparkDAL\AutoparkDAL.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Pages" />
+    </ItemGroup>
+
 </Project>
