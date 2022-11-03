@@ -16,12 +16,37 @@ public class VehicleController : Controller
         types = type;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(string sortOrder)
     {
+        ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+        ViewData["TypeSortParm"] = sortOrder == "Type" ? "type_desc" : "type";
+        ViewData["MileageSortParm"] = sortOrder == "Mileage" ? "mileage_desc" : "mileage";
         var vehicles = await repo.GetAll();
         foreach (var item in vehicles)
         {
             item.VehicleType = await types.GetItem(item.VehicleTypeId);
+        }
+
+        switch (sortOrder)
+        {
+            case "name_desc":
+                vehicles = vehicles.OrderByDescending(vehicles => vehicles.Model);
+                break;
+            case "type":
+                vehicles = vehicles.OrderBy(vehicles => vehicles.VehicleType.Name);
+                break;
+            case "type_desc":
+                vehicles = vehicles.OrderByDescending(vehicles => vehicles.VehicleType.Name);
+                break;
+            case "mileage":
+                vehicles = vehicles.OrderBy(vehicles => vehicles.Mileage);
+                break;
+            case "mileage_desc":
+                vehicles = vehicles.OrderByDescending(vehicles => vehicles.Mileage);
+                break;
+            default:
+                vehicles = vehicles.OrderBy(vehicles => vehicles.VehicleId);
+                break;
         }
         return View(vehicles);
     }

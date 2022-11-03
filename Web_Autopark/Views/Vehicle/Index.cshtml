@@ -8,13 +8,27 @@
 
 <div class="container p-2">
     <div class="row pt-2">
-        <div class="col-6">
-            <h2 class="text-primary">Vehicles list</h2>
+        <div class="col-11 w-75">
+            <h1 class="text-primary">Vehicles list</h1>
         </div>
-        <div class="col-6">
-            <a asp-controller="Vehicle" asp-action="Create" type="button" class="btn btn-outline-info">
+        <div class="col-1 w-25">
+            <a asp-controller="Vehicle" asp-action="Create" type="button" class="btn btn-outline-info" style="margin: 10px 10px 0px 0px">
                 Add new Vehicle
             </a>
+        </div>
+        <div class="col-1">
+            <h6>Sort by </h6>
+            <select class="form-select-sm">
+                <option>
+                    <a asp-controller="Vehicle" asp-action="Index" asp-route-sortOrder="@ViewData["ModelSortParm"]">Model</a>
+                </option>
+                <option>
+                    <a asp-controller="Vehicle" asp-action="Index" asp-route-sortOrder="@ViewData["TypeSortParm"]">Type</a>
+                </option>
+                <option>
+                    <a asp-controller="Vehicle" asp-action="Index" asp-route-sortOrder="@ViewData["MileageSortParm"]">Mileage</a>
+                </option>
+            </select>
         </div>
     </div>
     
@@ -24,11 +38,20 @@
         <table class="table table-bordered table-striped" style="width:100%">
         <thead>
         <tr>
-            <th>Model</th>
-            <th>Type</th>
+            <th>
+                Model
+                @* <a asp-controller="Vehicle" asp-action="Index" asp-route-sortOrder="@ViewData["ModelSortParm"]">Model</a> *@
+            </th>
+            <th>
+                Type
+                @* <a asp-controller="Vehicle" asp-action="Index" asp-route-sortOrder="@ViewData["TypeSortParm"]">Type</a> *@
+            </th>
             <th>Manufacture year</th>
             <th>Registration number</th>
-            <th>Mileage</th>
+            <th>
+                Mileage
+                @* <a asp-controller="Vehicle" asp-action="Index" asp-route-sortOrder="@ViewData["MileageSortParm"]">Mileage</a> *@
+            </th>
             <th>Weight</th>
             <th>Color</th>
         </tr>
@@ -45,7 +68,7 @@
                     <td>@item.Weight</td>
                     <td>@item.Color</td>
                     <th>
-                        <a type="button" asp-controller="Vehicle" asp-action="GetInfo" class="btn-outline-info" asp-route-id="@item.VehicleId">Manage</a>
+                        <a type="button" asp-controller="Vehicle" asp-action="GetInfo" class="btn btn-info w-100" asp-route-id="@item.VehicleId">Manage</a>
                     </th>
                 </tr>
             }
