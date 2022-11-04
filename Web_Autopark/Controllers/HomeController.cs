@@ -9,17 +9,15 @@ namespace Web_Autopark.Controllers;
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
-
-    public IRepository<Vehicle> repo;
+    
     public HomeController(ILogger<HomeController> logger, IRepository<Vehicle> rep)
     {
         _logger = logger;
-        repo = rep;
     }
 
     public IActionResult Index()
     {
-        return View(repo.GetAll());
+        return View();
     }
 
     public IActionResult Privacy()

@@ -4,35 +4,48 @@
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
-<h1 style="color: #0dcaf0">
-    Components
-</h1>
-<div class="container">
-    <div style="display: flex; width: 35%" >
-        @if (Model.Any())
-        {
-            <table class="table table-bordered table-striped" style="width:100%">
-                <thead>
-                <th>Name of component</th>
-                </thead>
-                <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td>
-                        @item.Name
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <h4 class="text-danger">There are no components in the database</h4>
-        }
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 style="color: #0dcaf0">Components</h2>
+        </div>
+        <div class="col-6">
+            <a asp-controller="VehicleType" asp-action="Create" type="button" class="btn btn-outline-info">
+                <i class="fa-solid fa-plus"></i>
+                Add new component
+            </a>
+        </div>
     </div>
-    <div style="display: flex; width: 35%">
-        <i class="fa-solid fa-plus"></i> New Component
-    </div>
+    
+    <br/>
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped w-75">
+            <thead>
+            <tr >
+                <th>Name</th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @* <th>@item.VehicleTypeId</th> *@
+                    <td>@item.Name</td>
+                    <th>
+                        <div class="btn-group w-75" role="group" style="padding-left: 25px">
+                            <a type="button" asp-controller="Component" asp-action="Edit" asp-route-id="@item.ComponentId" class="btn btn-info w-25"><i class="fa-regular fa-pen-to-square"></i> Edit</a>
+                            <a type="button" asp-controller="Component" asp-action="Delete" class="btn btn-danger" style="width: 35%" asp-route-id="@item.ComponentId"><i class="fa-solid fa-trash"></i> Delete</a>
+                        </div>
+                    </th>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Vehicle types in database</p>
+    }
 </div>

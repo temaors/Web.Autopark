@@ -51,3 +51,9 @@ svg {
 svg:hover {
   fill: #1B446A;
 }
+
+.vl {
+  border-left: 1px solid gray;
+  height: 40px;
+  position: absolute;
+}

@@ -18,9 +18,9 @@ public class VehicleController : Controller
 
     public async Task<IActionResult> Index(string sortOrder)
     {
-        ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-        ViewData["TypeSortParm"] = sortOrder == "Type" ? "type_desc" : "type";
-        ViewData["MileageSortParm"] = sortOrder == "Mileage" ? "mileage_desc" : "mileage";
+        ViewData["ModelSortParm"] = sortOrder == "model" ? "model_desc" : "model";
+        ViewData["TypeSortParm"] = sortOrder == "type" ? "type_desc" : "type";
+        ViewData["MileageSortParm"] = sortOrder == "mileage" ? "mileage_desc" : "mileage";
         var vehicles = await repo.GetAll();
         foreach (var item in vehicles)
         {
@@ -29,8 +29,8 @@ public class VehicleController : Controller
 
         switch (sortOrder)
         {
-            case "name_desc":
-                vehicles = vehicles.OrderByDescending(vehicles => vehicles.Model);
+            case "model":
+                vehicles = vehicles.OrderBy(vehicles => vehicles.Model);
                 break;
             case "type":
                 vehicles = vehicles.OrderBy(vehicles => vehicles.VehicleType.Name);
@@ -45,7 +45,7 @@ public class VehicleController : Controller
                 vehicles = vehicles.OrderByDescending(vehicles => vehicles.Mileage);
                 break;
             default:
-                vehicles = vehicles.OrderBy(vehicles => vehicles.VehicleId);
+                vehicles = vehicles.OrderByDescending(vehicles => vehicles.Model);
                 break;
         }
         return View(vehicles);

@@ -17,4 +17,16 @@ public class ComponentController : Controller
         var components = await repo.GetAll();
         return View(components);
     }
+
+    public async Task<IActionResult> Delete(int id)
+    {
+        await repo.Delete(id);
+        return RedirectToAction("Index");
+    }
+    
+    public async Task<IActionResult> Edit(Component component)
+    {
+        
+        return RedirectToAction("Index");
+    }
 }
