@@ -33,8 +33,13 @@ public class VehicleTypeController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(VehicleType vehicleType)
     {
-        await repo.Create(vehicleType);
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            await repo.Create(vehicleType);
+            return RedirectToAction("Index");
+        }
+
+        return View(vehicleType);
     }
     public async Task<IActionResult> Edit(int id)
     {

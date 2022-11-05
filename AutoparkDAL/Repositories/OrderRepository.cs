@@ -24,10 +24,8 @@ public class OrderRepository : IRepository<Order>
 
     public async Task<Order> GetItem(int id)
     {
-        using (IDbConnection db = new SqlConnection(connectionString))
-        {
-            return await db.QueryFirstAsync<Order>("SELECT * FROM Orders WHERE OrderId = @id", new {id});
-        }
+        using IDbConnection db = new SqlConnection(connectionString);
+        return await db.QueryFirstAsync<Order>("SELECT * FROM Orders WHERE OrderId = @id", new {id});
     }
 
     public async Task Create(Order item)

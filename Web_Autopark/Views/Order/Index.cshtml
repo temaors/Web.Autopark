@@ -1,18 +1,56 @@
 @model IEnumerable<AutoparkDAL.Entities.Order>
 
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+@{
+    ViewData["Title"] = "Orders";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<p>
+    <a asp-controller="Order" asp-action="Create">
+        <button type="submit" class="btn btn-success">
+            Create order
+        </button>
+    </a>
+</p>
+<br/>
+<br/>
+<table class="table">
+    <br/>
+    <tr>
+        <th>Id</th>
+        <th>Model Name</th>
+        <th>Registration Number</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.VehicleId</td>
+            <td>@item.Vehicle.Model</td>
+            <td>@item.Vehicle.RegistrationNumber</td>
+            <td>
+                <form method="get" asp-controller="OrderItem" asp-action="Create" asp-route-id="@item.VehicleId">
+                    <button type="submit" class="btn btn-success">
+                        Add parts
+                    </button>
+                </form>
+            </td>
+            <td>
+            <td>
+                <form method="get" asp-controller="OrderItem" asp-action="Index" asp-route-id="@item.VehicleId">
+                    <button type="submit" class="btn btn-warning">Info</button>
+                </form>
+            </td>
+            <td/>
+        </tr>
+    }
+</table>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
+<p>
 <div>
-      
+    <a type="button" asp-controller="Vehicle" asp-action="Index" class="btn m-2" style="color: #41464b"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to List</a>
 </div>
-</body>
-</html>

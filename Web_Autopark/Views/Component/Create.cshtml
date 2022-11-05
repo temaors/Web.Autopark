@@ -1,24 +1,21 @@
 @model AutoparkDAL.Entities.Component
 
 @{
-    ViewData["Title"] = "Edit Component";
+    Layout = "_Layout";
 }
-<h2>@ViewData["Title"]</h2>
- 
-<form asp-action="EditConfirm" asp-controller="Component">
+
+<form asp-action="Create" asp-controller="Component">
     <div>
-        <input type="hidden" asp-for="ComponentId" />
         <div class="form-group">
-            <label asp-for="Name">Name:</label>
-            <input type="text" asp-for="Name" class="form-control" />
+            <label asp-for="Name">Component Name:</label>
+            <input type="text" asp-for="Name" class="form-control form-control-sm" />
         </div>
-        <hr/>
         <div class="form-group">
             <input type="submit" value="Save" class="btn btn-success" />
         </div>
     </div>
 </form>
- 
-<<div>
+<br/>
+<div>
     <a type="button" asp-controller="Component" asp-action="Index" class="btn m-2" style="color: #41464b"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to List</a>
 </div>

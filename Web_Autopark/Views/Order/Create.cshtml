@@ -1,18 +1,27 @@
 @model AutoparkDAL.Entities.Order
 
+
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
+@{
+    ViewData["Title"] = "New Order";
+}
+<h2>@ViewData["Title"]</h2>
+<br/>
+<form asp-action="Create" asp-controller="Order">
+    <div>
+       <div class="form-group">
+            <label asp-for="VehicleId">Vehicle:</label>
+            <select class="form-control" asp-for="VehicleId" asp-items="@ViewBag.VehiclesList"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+ 
 <div>
-      
+    <a type="button" asp-controller="Vehicle" asp-action="Index" class="btn m-2" style="color: #41464b"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to List</a>
 </div>
-</body>
-</html>

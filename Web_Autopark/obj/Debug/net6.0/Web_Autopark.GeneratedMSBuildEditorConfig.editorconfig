@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = /Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Component/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29tcG9uZW50L0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Component/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ29tcG9uZW50L0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -37,6 +41,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Order/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXIvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/OrderItem/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJJdGVtL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/OrderItem/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JkZXJJdGVtL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/temaors/Documents/dev-incubator/Web_Autopark/Web_Autopark/Views/Shared/Error.cshtml]

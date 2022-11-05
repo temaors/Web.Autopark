@@ -1,0 +1,29 @@
+@model AutoparkDAL.Entities.OrderItem
+
+@{
+    Layout = "_Layout";
+}
+
+<form asp-action="Create" asp-controller="OrderItem">
+    <div>
+        <div class="form-group">
+            <label asp-for="Quantity">Quantity:</label>
+            <input type="text" asp-for="Quantity" class="form-control form-control-sm" />
+        </div>
+        <div class="form-group">
+            <label asp-for="ComponentId">Part:</label>
+            <select class="form-control" asp-for="ComponentId" asp-items="@ViewBag.PartsList"></select>
+        </div>
+        <input hidden asp-for="OrderId" class="form-control">
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+        <div  class="form-group">
+            <input type="submit" value="Save" class="btn btn-success" />
+        </div>
+    </div>
+</form>
+<br/>
+<div>
+    <a type="button" asp-controller="OrderItem" asp-action="Index" class="btn m-2" style="color: #41464b"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to List</a>
+</div>

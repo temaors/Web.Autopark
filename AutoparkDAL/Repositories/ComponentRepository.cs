@@ -15,10 +15,9 @@ public class ComponentRepository : IRepository<Component>
     }
     public async Task<IEnumerable<Component>> GetAll()
     {
-        using (IDbConnection db = new SqlConnection(connectionString))
-        {
-            return await db.QueryAsync<Component>("SELECT * FROM Components");
-        }
+        using IDbConnection db = new SqlConnection(connectionString);
+        return await db.QueryAsync<Component>("SELECT * FROM Components");
+
     }
 
     public async Task<Component> GetItem(int id)
@@ -31,13 +30,9 @@ public class ComponentRepository : IRepository<Component>
 
     public async Task Create(Component item)
     {
-        using (IDbConnection db = new SqlConnection(connectionString))
-        {
-            var sqlQuery =
-                "INSERT INTO Componets (ComponentId, Name)" +
-                "VALUES (@ComponentId, @Name)";
-            await db.ExecuteAsync(sqlQuery, item);
-        }
+        using IDbConnection db = new SqlConnection(connectionString);
+        var sqlQuery = "INSERT INTO Components (Name) VALUES (@Name)";
+        await db.ExecuteAsync(sqlQuery, item);
     }
 
     public async Task Update(Component item)

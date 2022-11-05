@@ -21,6 +21,7 @@ public class VehicleController : Controller
         ViewData["ModelSortParm"] = sortOrder == "model" ? "model_desc" : "model";
         ViewData["TypeSortParm"] = sortOrder == "type" ? "type_desc" : "type";
         ViewData["MileageSortParm"] = sortOrder == "mileage" ? "mileage_desc" : "mileage";
+        
         var vehicles = await repo.GetAll();
         foreach (var item in vehicles)
         {
@@ -44,10 +45,11 @@ public class VehicleController : Controller
             case "mileage_desc":
                 vehicles = vehicles.OrderByDescending(vehicles => vehicles.Mileage);
                 break;
-            default:
+            case "model_desc":
                 vehicles = vehicles.OrderByDescending(vehicles => vehicles.Model);
                 break;
         }
+        
         return View(vehicles);
     }
 
@@ -61,8 +63,15 @@ public class VehicleController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Vehicle vehicle)
     {
-        await repo.Create(vehicle);
-        return RedirectToAction("Index");
+        if (ModelState.IsValid)
+        {
+            await repo.Create(vehicle);
+            return RedirectToAction("Index");
+        }
+        var vehicleTypes = await types.GetAll();
+        ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
+
+        return View(vehicle);
     }
     
     [HttpGet]
