@@ -16,7 +16,7 @@ public class OrderController : Controller
         VehiclesRepository = vehiclesRepository;
     }
 
-
+    [HttpGet]
     public async Task<ActionResult> Index()
     {
         var orders = await OrdersRepository.GetAll();
@@ -26,7 +26,8 @@ public class OrderController : Controller
         }
         return View(orders);
     }
-
+    
+    [HttpGet]
     public async Task<ActionResult> Create()
     {
         var vehicles = await VehiclesRepository.GetAll();
@@ -38,6 +39,7 @@ public class OrderController : Controller
     [HttpPost]
     public async Task<ActionResult> Create(Order order)
     {
+        order.Date = DateTime.Today;
         await OrdersRepository.Create(order);
         return RedirectToAction("Index");
     }

@@ -59,6 +59,7 @@ public class VehicleController : Controller
         ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
         return View();
     }
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Vehicle vehicle)

@@ -20,6 +20,7 @@
         <th>Id</th>
         <th>Model Name</th>
         <th>Registration Number</th>
+        <th>Date</th>
         <th></th>
     </tr>
     @foreach (var item in Model)
@@ -28,6 +29,7 @@
             <td>@item.VehicleId</td>
             <td>@item.Vehicle.Model</td>
             <td>@item.Vehicle.RegistrationNumber</td>
+            <td>@item.Date.Date</td>
             <td>
                 <div class="btn-group w-75" role="group" style="padding-left: 25px">
                     <form method="get" asp-controller="OrderItem" asp-action="Create" asp-route-id="@item.OrderId">

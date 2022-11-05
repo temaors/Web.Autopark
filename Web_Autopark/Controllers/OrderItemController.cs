@@ -24,9 +24,12 @@ public class OrderItemController : Controller
     {
         var order = await orderRepository.GetItem(id);
         var vehicle = await vehiclesrepository.GetItem(order.VehicleId);
+        
         ViewBag.Vehicle = $"{vehicle.Model} {vehicle.RegistrationNumber}";
+        
         var ordersItems = await orderItemsRepository.GetAll();
         var items = new List<OrderItem>();
+        
         foreach (var orderItem in ordersItems)
         {
             if (orderItem.OrderId == id)
