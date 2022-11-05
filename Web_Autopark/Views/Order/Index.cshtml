@@ -8,17 +8,13 @@
     ViewData["Title"] = "Orders";
 }
 <h2>@ViewData["Title"]</h2>
-<br/>
 <p>
-    <a asp-controller="Order" asp-action="Create">
-        <button type="submit" class="btn btn-success">
-            Create order
-        </button>
+    <a asp-controller="Order" asp-action="Create" type="button" class="btn btn-outline-info" style="margin: 10px 10px 0px 0px">
+        <i class="fa-solid fa-plus"></i>
+        new order
     </a>
 </p>
-<br/>
-<br/>
-<table class="table">
+<table class="table table-bordered table-striped">
     <br/>
     <tr>
         <th>Id</th>
@@ -33,24 +29,21 @@
             <td>@item.Vehicle.Model</td>
             <td>@item.Vehicle.RegistrationNumber</td>
             <td>
-                <form method="get" asp-controller="OrderItem" asp-action="Create" asp-route-id="@item.VehicleId">
-                    <button type="submit" class="btn btn-success">
-                        Add parts
-                    </button>
-                </form>
+                <div class="btn-group w-75" role="group" style="padding-left: 25px">
+                    <form method="get" asp-controller="OrderItem" asp-action="Create" asp-route-id="@item.OrderId">
+                        <button type="submit" class="btn btn-success">
+                            Add parts
+                        </button>
+                    </form>
+                    <form method="get" asp-controller="OrderItem" asp-action="Index" asp-route-id="@item.OrderId">
+                        <button type="submit" class="btn btn-info">Info</button>
+                    </form>
+                </div>
             </td>
-            <td>
-            <td>
-                <form method="get" asp-controller="OrderItem" asp-action="Index" asp-route-id="@item.VehicleId">
-                    <button type="submit" class="btn btn-warning">Info</button>
-                </form>
-            </td>
-            <td/>
         </tr>
     }
 </table>
 
-<p>
 <div>
-    <a type="button" asp-controller="Vehicle" asp-action="Index" class="btn m-2" style="color: #41464b"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to List</a>
+    <a type="button" asp-controller="Home" asp-action="Index" class="btn m-2" style="color: #41464b"><i class="fa-solid fa-arrow-right-from-bracket"></i> Back to List</a>
 </div>

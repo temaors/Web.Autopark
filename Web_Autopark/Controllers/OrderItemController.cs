@@ -20,23 +20,39 @@ public class OrderItemController : Controller
         orderRepository = ords;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int id)
     {
-        var orderItems = await orderItemsRepository.GetAll();
-        return View(orderItems);
+        var order = await orderRepository.GetItem(id);
+        var vehicle = await vehiclesrepository.GetItem(order.VehicleId);
+        ViewBag.Vehicle = $"{vehicle.Model} {vehicle.RegistrationNumber}";
+        var ordersItems = await orderItemsRepository.GetAll();
+        var items = new List<OrderItem>();
+        foreach (var orderItem in ordersItems)
+        {
+            if (orderItem.OrderId == id)
+            {
+                orderItem.Component = await componentsRepository.GetItem(orderItem.ComponentId);
+                items.Add(orderItem);
+            }
+        }
+            
+        return View(items);
     }
     [HttpGet]
     public async Task<IActionResult> Create(int id)
     {
-        var components = await componentsRepository.GetAll();
+        var parts = await componentsRepository.GetAll();
         var order = await orderRepository.GetItem(id);
         var vehicle = await vehiclesrepository.GetItem(order.VehicleId);
+        
         ViewBag.Vehicle = $"{vehicle.Model} {vehicle.RegistrationNumber}";
-        ViewBag.PartsList = components.Select(component => new SelectListItem(component.Name, component.ComponentId.ToString()));
-        return RedirectToAction("Index");
+        ViewBag.PartsList = parts.Select(part => new SelectListItem(part.Name, part.ComponentId.ToString()));
+        
+        return View(new OrderItem {OrderId = id});
     }
     
     [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(OrderItem orderItem)
     {
         await orderItemsRepository.Create(orderItem);

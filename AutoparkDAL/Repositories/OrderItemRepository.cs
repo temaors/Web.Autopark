@@ -34,8 +34,8 @@ public class OrderItemRepository : IRepository<OrderItem>
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
-                "INSERT INTO OrderItem (OrderItemId, OrderId, ComponentId, Quantity)" +
-                "VALUES (@OrderItemId, @OrderId, @ComponentId, @Quantity)";
+                "INSERT INTO OrderItems (OrderId, ComponentId, Quantity)" +
+                "VALUES (@OrderId, @ComponentId, @Quantity)";
             await db.ExecuteAsync(sqlQuery, item);
         }
     }
