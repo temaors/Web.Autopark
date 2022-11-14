@@ -8,9 +8,9 @@ namespace Web_Autopark.Controllers;
 
 public class VehicleTypeController : Controller
 {
-    private readonly ILogger<VehicleTypeController> _logger;
+    private readonly ILogger<VehicleTypeController> _logger; //Why do you need the logger?
 
-    public IRepository<VehicleType> repo;
+    public IRepository<VehicleType> repo; // make it private readonly
 
 
     public VehicleTypeController(ILogger<VehicleTypeController> logger, IRepository<VehicleType> rep)
@@ -25,7 +25,7 @@ public class VehicleTypeController : Controller
         return View(vehicleTypes);
     }
     
-    public IActionResult Create()
+    public IActionResult Create() // rename
     {
         return View();
     }
@@ -41,7 +41,7 @@ public class VehicleTypeController : Controller
 
         return View(vehicleType);
     }
-    public async Task<IActionResult> Edit(int id)
+    public async Task<IActionResult> Edit(int id) //rename
     {
         var vehicleType = await repo.GetItem(id);
         return View(vehicleType);

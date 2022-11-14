@@ -8,7 +8,7 @@ namespace AutoparkDAL.Repositories;
 
 public class VehicleRepository : IRepository<Vehicle>
 {
-    private string connectionString;
+    private string connectionString; //make it readonly
     public VehicleRepository(string conn)
     {
         connectionString = conn;
@@ -34,7 +34,7 @@ public class VehicleRepository : IRepository<Vehicle>
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
-                "INSERT INTO Vehicles (VehicleTypeId, Model, RegistrationNumber, Weight, Year, Mileage, Color, FuelConsumption, Volume)" +
+                "INSERT INTO Vehicles (VehicleTypeId, Model, RegistrationNumber, Weight, Year, Mileage, Color, FuelConsumption, Volume)" + //you can use '@' instead of concatenation 
                 "VALUES (@VehicleTypeId, @Model, @RegistrationNumber, @Weight, @Year, @Mileage, @Color, @FuelConsumption, @Volume)";
             await db.ExecuteAsync(sqlQuery, item);
         }

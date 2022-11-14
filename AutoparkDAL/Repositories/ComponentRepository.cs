@@ -8,7 +8,7 @@ namespace AutoparkDAL.Repositories;
 
 public class ComponentRepository : IRepository<Component>
 {
-    private string connectionString;
+    private string connectionString; //make it readonly
     public ComponentRepository(string conn)
     {
         connectionString = conn;

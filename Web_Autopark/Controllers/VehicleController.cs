@@ -7,8 +7,8 @@ namespace Web_Autopark.Controllers;
 
 public class VehicleController : Controller
 {
-    public IRepository<Vehicle> repo;
-    public IRepository<VehicleType> types;
+    public IRepository<Vehicle> repo; // make it private readonly
+    public IRepository<VehicleType> types; // make it private readonly
 
     public VehicleController(IRepository<Vehicle> rep, IRepository<VehicleType> type)
     {
@@ -25,7 +25,7 @@ public class VehicleController : Controller
         var vehicles = await repo.GetAll();
         foreach (var item in vehicles)
         {
-            item.VehicleType = await types.GetItem(item.VehicleTypeId);
+            item.VehicleType = await types.GetItem(item.VehicleTypeId); //it's better to get all vehicle types and then map them for vehicles from collection
         }
 
         switch (sortOrder)
@@ -53,7 +53,7 @@ public class VehicleController : Controller
         return View(vehicles);
     }
 
-    public async Task<IActionResult> Create()
+    public async Task<IActionResult> Create() //rename
     {
         var vehicleTypes = await types.GetAll();
         ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
@@ -81,7 +81,7 @@ public class VehicleController : Controller
         vehicle.VehicleType = await types.GetItem(vehicle.VehicleTypeId);
         return View(vehicle);
     }
-    public async Task<IActionResult> Edit(int id)
+    public async Task<IActionResult> Edit(int id) //rename
     {
         var vehicle = await repo.GetItem(id);
         var vehicleTypes = await types.GetAll();

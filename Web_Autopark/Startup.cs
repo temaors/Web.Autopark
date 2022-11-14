@@ -12,8 +12,8 @@ namespace Web_Autopark
         public Startup(IConfiguration configuration)
         {
             _config = new AppConfig(configuration);
-            Console.WriteLine("Connection string: " + _config.ConnectionString);
-            _config.ConnectionString = "Server=localhost; Database=AutoparkDb; User Id=sa; Password=Orsi4ek148; TrustServerCertificate=true";
+            Console.WriteLine("Connection string: " + _config.ConnectionString); //Remove this
+            _config.ConnectionString = "Server=localhost; Database=AutoparkDb; User Id=sa; Password=Orsi4ek148; TrustServerCertificate=true"; // it's better to move connection string to appsettings.json
         }
         public void ConfigureServices(IServiceCollection services)
         {

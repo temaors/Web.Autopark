@@ -8,7 +8,7 @@ namespace AutoparkDAL.Repositories;
 
 public class OrderItemRepository : IRepository<OrderItem>
 {
-    private string connectionString;
+    private string connectionString; //make it readonly
     public OrderItemRepository(string conn)
     {
         connectionString = conn;
@@ -34,7 +34,7 @@ public class OrderItemRepository : IRepository<OrderItem>
         using (IDbConnection db = new SqlConnection(connectionString))
         {
             var sqlQuery =
-                "INSERT INTO OrderItems (OrderId, ComponentId, Quantity)" +
+                "INSERT INTO OrderItems (OrderId, ComponentId, Quantity)" + //you can use '@' instead of concatenation
                 "VALUES (@OrderId, @ComponentId, @Quantity)";
             await db.ExecuteAsync(sqlQuery, item);
         }

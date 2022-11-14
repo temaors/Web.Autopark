@@ -6,13 +6,13 @@ namespace Web_Autopark.Controllers;
 
 public class ComponentController : Controller
 {
-    public IRepository<Component> repo;
+    public IRepository<Component> repo; // make it private readonly
 
     public ComponentController(IRepository<Component> rep)
     {
         repo = rep;
     }
-    public IActionResult Create()
+    public IActionResult Create() //rename
     {
         return View();
     }
@@ -35,7 +35,7 @@ public class ComponentController : Controller
         return RedirectToAction("Index");
     }
     
-    public async Task<IActionResult> Edit(int id)
+    public async Task<IActionResult> Edit(int id) //rename
     {
         var component = await repo.GetItem(id);
         return View(component);

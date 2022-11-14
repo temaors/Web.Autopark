@@ -7,8 +7,8 @@ namespace Web_Autopark.Controllers;
 
 public class OrderController : Controller
 {
-    public IRepository<Order> OrdersRepository;
-    public IRepository<Vehicle> VehiclesRepository;
+    public IRepository<Order> OrdersRepository; // make it private readonly
+    public IRepository<Vehicle> VehiclesRepository; // make it private readonly
 
     public OrderController(IRepository<Order> ordersRepository, IRepository<Vehicle> vehiclesRepository)
     {
@@ -22,12 +22,12 @@ public class OrderController : Controller
         var orders = await OrdersRepository.GetAll();
         foreach (var order in orders)
         {
-            order.Vehicle = await VehiclesRepository.GetItem(order.VehicleId);
+            order.Vehicle = await VehiclesRepository.GetItem(order.VehicleId); //it's better to get all vehicles and then map them for orders from collection
         }
         return View(orders);
     }
 
-    public async Task<ActionResult> Create()
+    public async Task<ActionResult> Create() //rename
     {
         var vehicles = await VehiclesRepository.GetAll();
         ViewBag.VehiclesList = vehicles.Select(vehicle =>

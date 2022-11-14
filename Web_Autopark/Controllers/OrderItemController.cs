@@ -7,10 +7,10 @@ namespace Web_Autopark.Controllers;
 
 public class OrderItemController : Controller
 {
-    public IRepository<OrderItem> orderItemsRepository;
-    public IRepository<Vehicle> vehiclesrepository;
-    public IRepository<Component> componentsRepository;
-    public IRepository<Order> orderRepository;
+    public IRepository<OrderItem> orderItemsRepository; // make it private readonly
+    public IRepository<Vehicle> vehiclesrepository; // make it private readonly
+    public IRepository<Component> componentsRepository; // make it private readonly
+    public IRepository<Order> orderRepository; // make it private readonly
 
     public OrderItemController(IRepository<OrderItem> rep, IRepository<Vehicle> vehs, IRepository<Component> comps, IRepository<Order> ords)
     {
@@ -39,7 +39,7 @@ public class OrderItemController : Controller
         return View(items);
     }
     [HttpGet]
-    public async Task<IActionResult> Create(int id)
+    public async Task<IActionResult> Create(int id) //rename
     {
         var parts = await componentsRepository.GetAll();
         var order = await orderRepository.GetItem(id);

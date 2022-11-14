@@ -8,7 +8,7 @@ namespace AutoparkDAL.Repositories;
 
 public class OrderRepository : IRepository<Order>
 {
-    private string connectionString;
+    private string connectionString; //make it readonly
 
     public OrderRepository(string conn)
     {
@@ -34,7 +34,7 @@ public class OrderRepository : IRepository<Order>
         {
             var sqlQuery =
                 "INSERT INTO Orders (VehicleId, Date)" +
-                "VALUES (@VehicleId, @Date)";
+                "VALUES (@VehicleId, @Date)"; //you can use '@' instead of concatenation
             await db.ExecuteAsync(sqlQuery, item);
         }
     }
