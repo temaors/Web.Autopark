@@ -7,8 +7,8 @@ namespace Web_Autopark.Controllers;
 
 public class VehicleController : Controller
 {
-    public IRepository<Vehicle> repo;
-    public IRepository<VehicleType> types;
+    private readonly IRepository<Vehicle> repo;
+    private readonly IRepository<VehicleType> types;
 
     public VehicleController(IRepository<Vehicle> rep, IRepository<VehicleType> type)
     {
@@ -67,10 +67,6 @@ public class VehicleController : Controller
         vehicle.VehicleType = await types.GetItem(vehicle.VehicleTypeId);
         await repo.Create(vehicle);
         return RedirectToAction("Index");
-        // var vehicleTypes = await types.GetAll();
-        // ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
-        //
-        // return View(vehicle);
     }
     
     [HttpGet]

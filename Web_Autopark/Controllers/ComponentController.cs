@@ -6,7 +6,7 @@ namespace Web_Autopark.Controllers;
 
 public class ComponentController : Controller
 {
-    public IRepository<Component> repo;
+    private readonly IRepository<Component> repo;
 
     public ComponentController(IRepository<Component> rep)
     {

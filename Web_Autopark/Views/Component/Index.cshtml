@@ -18,7 +18,7 @@
     </div>
     
     <br/>
-    @if (Model.Count() > 0)
+    @if (Model.Any())
     {
         <table class="table table-bordered table-striped w-75">
             <thead>
@@ -31,7 +31,6 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    @* <th>@item.VehicleTypeId</th> *@
                     <td>@item.Name</td>
                     <th>
                         <div class="btn-group w-75" role="group" style="padding-left: 25px">

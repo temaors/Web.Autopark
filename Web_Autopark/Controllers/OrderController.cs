@@ -7,8 +7,8 @@ namespace Web_Autopark.Controllers;
 
 public class OrderController : Controller
 {
-    public IRepository<Order> OrdersRepository;
-    public IRepository<Vehicle> VehiclesRepository;
+    private readonly IRepository<Order> OrdersRepository;
+    private readonly IRepository<Vehicle> VehiclesRepository;
 
     public OrderController(IRepository<Order> ordersRepository, IRepository<Vehicle> vehiclesRepository)
     {

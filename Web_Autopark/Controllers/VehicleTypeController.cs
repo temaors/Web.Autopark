@@ -8,14 +8,10 @@ namespace Web_Autopark.Controllers;
 
 public class VehicleTypeController : Controller
 {
-    private readonly ILogger<VehicleTypeController> _logger;
+    private readonly IRepository<VehicleType> repo;
 
-    public IRepository<VehicleType> repo;
-
-
-    public VehicleTypeController(ILogger<VehicleTypeController> logger, IRepository<VehicleType> rep)
+    public VehicleTypeController(IRepository<VehicleType> rep)
     {
-        _logger = logger;
         repo = rep;
     }
 
@@ -38,7 +34,6 @@ public class VehicleTypeController : Controller
             await repo.Create(vehicleType);
             return RedirectToAction("Index");
         }
-
         return View(vehicleType);
     }
     public async Task<IActionResult> Edit(int id)
@@ -55,12 +50,6 @@ public class VehicleTypeController : Controller
 
     public async Task<IActionResult> Delete(int id)
     {
-        // string message = "Your request is being processed.";
-        // System.Text.StringBuilder sb = new System.Text.StringBuilder();
-        // sb.Append("alert('");
-        // sb.Append(message);
-        // sb.Append("');");
-        // ClientScript.RegisterOnSubmitStatement(this.GetType(), "alert", sb.ToString());
         await repo.Delete(id);
         return RedirectToAction("Index");
     }
