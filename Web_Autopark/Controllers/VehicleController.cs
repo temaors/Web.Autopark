@@ -64,15 +64,13 @@ public class VehicleController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Vehicle vehicle)
     {
-        if (ModelState.IsValid)
-        {
-            await repo.Create(vehicle);
-            return RedirectToAction("Index");
-        }
-        var vehicleTypes = await types.GetAll();
-        ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
-
-        return View(vehicle);
+        vehicle.VehicleType = await types.GetItem(vehicle.VehicleTypeId);
+        await repo.Create(vehicle);
+        return RedirectToAction("Index");
+        // var vehicleTypes = await types.GetAll();
+        // ViewBag.TypeList = vehicleTypes.Select(type => new SelectListItem(type.Name,type.VehicleTypeId.ToString()));
+        //
+        // return View(vehicle);
     }
     
     [HttpGet]
